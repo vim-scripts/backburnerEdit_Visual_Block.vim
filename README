@@ -1,0 +1,48 @@
+This is a mirror of http://www.vim.org/scripts/script.php?script_id=1531
+
+ ---------------------------------------------------------------------------
+
+ Edit_Visual_Block.vim :   Edit the text in a Visual Block as 
+                           if it were in a virtual window.
+
+   Description:
+   
+       Creates a virtual 'edit window' inside the visual selection area.
+       Once the boundary box is drawn, you can insert/replace/cut/paste as
+       normal, and it will try to maintain the boundary box in some
+       reasonable fashion.
+
+   Usage:
+
+       i   Select a Visual Block (with ^V or ^Q), and type 'i' (default
+           mapping).  It will draw a box around the visual area, and return
+           you to Vim Normal mode.  Begin editing.  See Notes for things
+           not to do.
+
+       <ESC>
+           Hitting escape while in Vim Normal mode will terminate the
+           Edit Visual Block mode, and return to the visual block
+           selection.
+
+   Notes:
+
+   -   While this mode is in effect, for the lines that are part of
+       the seletion, characters outside of the visual block selection
+       cannot be changed,.  It needs these strings as markers for the
+       boundaries of the virtual edit window.
+
+       If changes are made, the boundary strings will be restored, with
+       other text moved inwards, if possible.
+       
+   -   Deleting or adding lines in the selected area is not handled or
+       recommended.
+
+   -   Pasting simple block-wise("^V"), or line-wise ("V") text will
+       generally do something useful, but pasting multi-line char-wise
+       ("v"), will generally do something messy.
+           
+   -   Until I can decypher 'undojoin', you will have use more than one
+       'undo' at a time, i.e.  '2u' or '3u' or whatever, to undo the last
+       change while the mode is in effect.
+
+
